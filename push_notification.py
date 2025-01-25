@@ -2,7 +2,6 @@ from twilio.rest import Client
 import os
 from dotenv import load_dotenv
 
-
 # If this doesn't work, you need to create a .env file in the same directory as this file
 # and add the following lines:
 # TWILIO_ACCOUNT_SID=your_account_sid
@@ -32,15 +31,13 @@ class BurnoutNotifier:
 
 
 if __name__ == '__main__':
+
     # Get twilio account_sid and auth_token .env file
     account_sid = os.getenv('TWILIO_ACCOUNT_SID')
     auth_token = os.getenv('TWILIO_AUTH_TOKEN')
     to_phone_number = os.getenv('TWILIO_PHONE_NUMBER')
 
-
+    # Send notification to the phone number
     notifier = BurnoutNotifier(to_phone_number=to_phone_number, account_sid=account_sid, auth_token=auth_token)
     notifier.send_notification()
 
-# Example usage:
-# notifier = BurnoutNotifier('+1234567890', '+0987654321', 'your_account_sid', 'your_auth_token')
-# notifier.send_notification()
